@@ -12,7 +12,7 @@ import java.util.Properties;
 public class ConnectionSingleton {
 
 
-    private static Connection connection = null;
+    private static Connection connection;
 
 
     private ConnectionSingleton() {
@@ -34,6 +34,7 @@ public class ConnectionSingleton {
                 String password = properties.getProperty("db.password");
                 Class c = Class.forName(driver);
                 System.out.println("Ho caricato: " + c.getName());
+                
                 String myUrl = "jdbc:" + vendor + "://" + host + ":" + port + "/" + dbName;
                 DriverManagerDataSource dataSource = new DriverManagerDataSource(myUrl, username, password);
                 dataSource.setDriverClassName(driver);
